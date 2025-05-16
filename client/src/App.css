@@ -1,7 +1,15 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
-body{
-    background: white;
-    color:black;
+@plugin "daisyui" {
+  themes: light --default;
 }
+
+@plugin "daisyui/theme" {
+  name: "mytheme";
+  default: true;   
+  color-scheme: light;
+
+  --color-primary: #E3B577;
+  --color-secondary: #372727;
+
+}
+

@@ -1,20 +1,16 @@
-import React from 'react';
-import { Outlet } from 'react-router';
-import Header from '../Components/Header';
-
+import React from "react";
+import { Outlet } from "react-router";
+import Header from "../Components/Header";
 
 const Root = () => {
-    return (
-        <>
-            <Header></Header>
-            <main className='py-24'>
-                <div className="container mx-auto px-5">
-                    <Outlet></Outlet>
-                </div>
-            </main>
-           
-        </>
-    );
+  return (
+    <>
+      <Header></Header>
+      <main className="main">
+        <Outlet></Outlet>
+      </main>
+    </>
+  );
 };
 
 export default Root;
