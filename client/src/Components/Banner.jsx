@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BannerBg from '../assets/Banner.png'
+import { Link } from 'react-router';
 
 const Banner = () => {
     return (
@@ -13,9 +14,9 @@ Would you like a Cup of Delicious Coffee?
                     <p className='text-base text-gray-100 mb-4'>
 It's coffee time - Sip & Savor - Relaxation in every sip! Get the nostalgia back!! Your companion of every moment!!! Enjoy the beautiful moments and make them memorable.
                     </p>
-                    <button className="btn bg-amber-200 text-black border border-amber-200 hover:bg-transparent hover:text-white">
+                    <Link to="/users" className="btn bg-amber-200 text-black border border-amber-200 hover:bg-transparent hover:text-white">
 Learn More
-                    </button>
+                    </Link>
                 </div>
 
             </div>  

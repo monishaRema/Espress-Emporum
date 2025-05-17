@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
-const Coffee = ({ coffee,coffees,setCoffees }) => {
-
-
+const Coffee = ({ coffee, coffees, setCoffees }) => {
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -14,6 +12,20 @@ const Coffee = ({ coffee,coffees,setCoffees }) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
+      showClass: {
+        popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `,
+      },
+      hideClass: {
+        popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `,
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:3000/coffees/${id}`, {
@@ -28,8 +40,8 @@ const Coffee = ({ coffee,coffees,setCoffees }) => {
                 icon: "success",
               });
 
-              const filter = coffees.filter(coffee => coffee._id !== id)
-              setCoffees(filter)
+              const filter = coffees.filter((coffee) => coffee._id !== id);
+              setCoffees(filter);
             }
           });
       }
@@ -58,8 +70,12 @@ const Coffee = ({ coffee,coffees,setCoffees }) => {
         </p>
       </div>
       <div className="btn-box flex flex-col gap-6">
-        <Link to={`/coffee-details/${coffee._id}`} className="btn ">View</Link>
-        <Link to={`/update/${coffee._id}`} className="btn btn-info">Edit</Link>
+        <Link to={`/coffee-details/${coffee._id}`} className="btn btn-success">
+          View
+        </Link>
+        <Link to={`/update/${coffee._id}`} className="btn btn-secondary">
+          Edit
+        </Link>
         <button
           onClick={() => handleDelete(coffee._id)}
           className="btn btn-warning"

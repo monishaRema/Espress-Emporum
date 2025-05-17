@@ -25,6 +25,7 @@ async function run() {
     await client.connect();
 
     const coffeeCollection = client.db('coffeeDB').collection('coffee')
+    const userCollection = client.db('coffeeDB').collection('user')
 
     app.post('/coffees',async(req,res)=>{
       const newCoffee = req.body
@@ -62,6 +63,39 @@ async function run() {
         const result = await coffeeCollection.updateOne(filter,query)
         res.send(result)
     })
+
+    app.post('/user',async(req,res)=>{
+      const data = req.body
+     const result = await userCollection.insertOne(data)
+     res.send(result)
+    })
+
+    app.get('/users',async(req,res)=>{
+      const result = await userCollection.find().toArray()
+      res.send(result)
+
+    })
+
+    app.delete('/users/:id',async(req,res)=>{
+      const id = req.params.id;
+      const filter =  {_id: new ObjectId(id)}
+      const result = await userCollection.deleteOne(filter)
+      res.send(result)
+    })
+
+    app.patch('/users',async(req,res)=>{
+    const {email,lastSignInTime} = req.body
+    const filter= {email:email}
+    const query = {$set:{
+      lastSignInTime:lastSignInTime
+    }}
+
+    const result = await userCollection.updateOne(filter,query)
+
+    res.send(result)
+    })
+ 
+
 
     
   } 

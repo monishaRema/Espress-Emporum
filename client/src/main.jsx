@@ -13,6 +13,7 @@ import SignUp from "./Components/SignUp.jsx";
 import Signin from "./Components/Signin.jsx";
 import AuthProvider from "./Context/AuthProvider.jsx";
 import Error from "./Components/Error.jsx";
+import Users from "./Components/Users.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,13 +41,18 @@ const router = createBrowserRouter([
         Component: Update,
       },
       {
-        path:'/signUp',
+        path:'/signup',
         Component:SignUp
       },
       {
         path:'/signIn',
         Component:Signin
       }, 
+      {
+        path: "/users",
+        loader:()=> fetch(`http://localhost:3000/users/`),
+        Component: Users
+      },
       {
         path: '/*',
         Component:Error
